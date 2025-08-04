@@ -63,9 +63,7 @@ python identificacion.py
 
 ## 🛠️ Posibles mejoras
 
-Aquí tienes algunas ideas para expandir el proyecto:
-
-- Validar los datos ingresados y mostrar un mensaje de éxito o error.
+- ✅ Validar los datos ingresados y mostrar un mensaje de éxito o error.
 - Conectar con una base de datos para verificar credenciales.
 - Añadir estilos personalizados con `ttk` o temas.
 - Implementar navegación a otra ventana tras el inicio de sesión.
