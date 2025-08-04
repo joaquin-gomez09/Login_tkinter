@@ -26,7 +26,7 @@ def verificar_login():
     else:
         intentos += 1
         if intentos >= 3:
-            mensaje_label.config(text="❌ Demasiados intentos.\nPor motivos de seguridad esta ventana sera bloqueada", fg="red")
+            mensaje_label.config(text="❌ Demasiados intentos.\nBloqueado", fg="red")
             boton_1.config(state="disabled")
             ventana_principal.after(2000, ventana_principal.destroy)
         else:
