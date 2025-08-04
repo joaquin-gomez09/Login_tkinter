@@ -2,12 +2,20 @@ from tkinter import * # Importamos la libreria "Tkinter"
 from tkinter import messagebox # messagebox para dar mensajes de alerta o avisos al usuario
 
 # Credenciales
-USUARIO_CORRECTO = "guido"
-CLAVE_USUARIO = "python123"
+USUARIO_CORRECTO = "root"
+CLAVE_USUARIO = "123"
 
 # Contador
 
 intentos = 0
+
+# Colores según intentos
+colores_intentos = {
+    0: "#555555",  # gris oscuro (sin errores)
+    1: "#FF9900",  # naranja (primer error)
+    2: "#FF3300",  # rojo fuerte (segundo error)
+    3: "#CC0000"   # rojo oscuro (bloqueado)
+}
 
 # Función para verificar Login
 
@@ -24,13 +32,21 @@ def verificar_login():
         mensaje_label.config(text=f"✅ Bienvenido {usuario}!", fg="green")
         ventana_principal.after(2000, ventana_principal.destroy)
     else:
+        # 3️⃣ Falló el login: sumamos un intento
         intentos += 1
-        if intentos >= 3:
-            mensaje_label.config(text="❌ Demasiados intentos.\nBloqueado", fg="red")
+        intentos_restantes = 3 - intentos
+
+        # Cambiamos el mensaje principal a rojo
+        mensaje_label.config(text="❌ Usuario o contraseña incorrectos", fg="red")
+
+        # Cambiamos el label de intentos
+        if intentos < 3:
+            intentos_label.config(text=f"Te quedan {intentos_restantes} intentos", fg=colores_intentos[intentos])
+        else:
+            # Si ya falló 3 veces, bloqueamos
+            intentos_label.config(text="🚨 Demasiados intentos. Bloqueado.", fg=colores_intentos[3])
             boton_1.config(state="disabled")
             ventana_principal.after(2000, ventana_principal.destroy)
-        else:
-            mensaje_label.config(text="❌ Usuario o contraseña incorrectos", fg="red")
 
 ventana_principal = Tk()
 ventana_principal.title("Iniciar sesion")
@@ -66,6 +82,9 @@ espacio.grid(column=0, row=7)
 
 mensaje_label = Label(text="", font=("Arial", 12))
 mensaje_label.grid(column=0, row=10)
+
+intentos_label = Label(text="Tienes 3 intentos", font=("Arial", 12), fg=colores_intentos[0])
+intentos_label.grid(column=0, row=11)
 
 boton_1 = Button(text="Aceptar", font=("Arial", 14), command=verificar_login)
 boton_1.grid(column=0, row=8)
