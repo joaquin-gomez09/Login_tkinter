@@ -1,5 +1,5 @@
-usuario_correcto = "Guido"
-contraseña_correcta = "python123"
+usuario_correcto = "root"
+contraseña_correcta = "123"
 
 for intento in range(3):
     usuario = input("Ingresar nombre de usuario: ").lower()
