@@ -2,13 +2,19 @@ from tkinter import * # Importamos la libreria "Tkinter"
 
 # Credenciales
 
-USUARIO_CORRECTO = "Guido"
+USUARIO_CORRECTO = "guido"
 CLAVE_USUARIO = "python123"
 
 ventana_principal = Tk()
 ventana_principal.title("Iniciar sesion")
 ventana_principal.minsize(width=300, height=400)
 ventana_principal.config(padx=35, pady=35)
+# ventana_principal.configure(bg="#000000") (cambio de color, por el momento no)
+canvas = Canvas(width=256, height=200)
+foto_logo = PhotoImage(file="app_login/imagenes/candado_1.png")
+canvas.create_image(128, 100, image=foto_logo)
+canvas.image = foto_logo
+canvas.grid(column=0, row=0)
 
 label_1 = Label(text="Escribe tu nombre de usuario", font=("Arial", 14))
 label_1.grid(column=0, row=1)
@@ -41,6 +47,7 @@ def verificar_login():
 
     if usuario == USUARIO_CORRECTO and contraseña == CLAVE_USUARIO:
         mensaje_label.config(text=f"✅ Bienvenido {usuario}!", fg="green")
+        ventana_principal.after(2000, ventana_principal.destroy)
     else:
         mensaje_label.config(text="❌ Usuario o contraseña incorrectos", fg="red")
 
