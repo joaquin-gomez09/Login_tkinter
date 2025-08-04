@@ -20,7 +20,6 @@ canvas.image = foto_logo
 # Posiciona el canvas en la ventana (columna 0, fila 0)
 canvas.grid(column=0, row=0)
 
-
 label_1 = Label(text="Escribe tu nombre de usuario", font=("Arial", 14)) # Creamos un texto descriptivo y selecionamos el tipo de fuente y el tamaño
 label_1.grid(column=0, row=1) # Ubicamos la linea de texto en la columna 0 y en la fila 1
 
