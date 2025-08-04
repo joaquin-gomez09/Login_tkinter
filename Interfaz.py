@@ -47,8 +47,4 @@ espacio.grid(column=0, row=8)
 boton_1 = Button(text="Aceptar", font=("Arial", 14))
 boton_1.grid(column=0, row=9)
 
-
-
-
-
 ventana_principal.mainloop() # Creamos un bucle para mostrar la ventana indefinidamente

@@ -6,11 +6,11 @@ for intento in range(3):
     
     if usuario == "guido":
             print("")
-            print("🔓 Acceso concedido\n")
+            print("👤✅ Usuario correcto\n")
             break
     else:
         print("")
-        print("👤🔒 Usuario incorrecto\n")
+        print("👤❌ Usuario incorrecto\n")
 else:
     print("Demasiados intentos\n")
     exit()
