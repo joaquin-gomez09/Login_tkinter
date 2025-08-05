@@ -1,6 +1,7 @@
-import tkinter as tk
 from tkinter import * # Importamos la libreria "Tkinter"
 from tkinter import messagebox # messagebox para dar mensajes de alerta o avisos al usuario
+import tkinter as tk
+from tkinter import ttk
 
 # Credenciales
 USUARIO_CORRECTO = "root"
@@ -31,8 +32,12 @@ def verificar_login():
 
     if usuario == USUARIO_CORRECTO and contraseña == CLAVE_USUARIO:
         mensaje_label.config(text=f"✅ Bienvenido {usuario}!", fg="green")
-        mensaje_label.config(text="")
-        ventana_principal.after(2000, ventana_principal.destroy)
+        ventana_secundaria = tk.Toplevel()
+        ventana_secundaria.title("Bienvenido")
+        ventana_secundaria.config(width=300, height=400)
+        boton_cerrar = ttk.Button(ventana_secundaria, text="Salir", command=ventana_secundaria.destroy) # El primer parametro asigna a que ventana se va a mostrar el botón
+        boton_cerrar.place(x=100, y=135)
+        # ventana_principal.after(2000, ventana_principal.destroy)
     else:
         # 3️⃣ Falló el login: sumamos un intento
         intentos += 1
