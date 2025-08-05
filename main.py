@@ -1,3 +1,4 @@
+import tkinter as tk
 from tkinter import * # Importamos la libreria "Tkinter"
 from tkinter import messagebox # messagebox para dar mensajes de alerta o avisos al usuario
 
@@ -52,6 +53,8 @@ ventana_principal = Tk()
 ventana_principal.title("Iniciar sesion")
 ventana_principal.minsize(width=300, height=400)
 ventana_principal.config(padx=35, pady=35)
+icono = tk.PhotoImage(file="app_login/imagenes/icono.png")
+ventana_principal.iconphoto(True, icono)
 # ventana_principal.configure(bg="#000000") (cambio de color, por el momento no)
 canvas = Canvas(width=256, height=200)
 foto_logo = PhotoImage(file="app_login/imagenes/candado.png")
