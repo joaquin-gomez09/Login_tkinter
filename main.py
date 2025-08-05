@@ -54,7 +54,7 @@ ventana_principal.minsize(width=300, height=400)
 ventana_principal.config(padx=35, pady=35)
 # ventana_principal.configure(bg="#000000") (cambio de color, por el momento no)
 canvas = Canvas(width=256, height=200)
-foto_logo = PhotoImage(file="app_login/imagenes/candado_1.png")
+foto_logo = PhotoImage(file="app_login/imagenes/candado.png")
 canvas.create_image(128, 100, image=foto_logo)
 canvas.image = foto_logo
 canvas.grid(column=0, row=0)
