@@ -34,9 +34,11 @@ def verificar_login():
         mensaje_label.config(text=f"✅ Bienvenido {usuario}!", fg="green")
         ventana_secundaria = tk.Toplevel()
         ventana_secundaria.title("Bienvenido")
-        ventana_secundaria.config(width=300, height=400)
+        ventana_secundaria.config(width=400, height=320)
         boton_cerrar = ttk.Button(ventana_secundaria, text="Salir", command=ventana_secundaria.destroy) # El primer parametro asigna a que ventana se va a mostrar el botón
-        boton_cerrar.place(x=100, y=135)
+        boton_cerrar.place(x=150, y=150)
+        ventana_secundaria.focus()
+        ventana_secundaria.grab_set() # Evita que se multipliquen las ventanas
         # ventana_principal.after(2000, ventana_principal.destroy)
     else:
         # 3️⃣ Falló el login: sumamos un intento
