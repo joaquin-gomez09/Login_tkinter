@@ -31,6 +31,7 @@ def verificar_login():
 
     if usuario == USUARIO_CORRECTO and contraseña == CLAVE_USUARIO:
         mensaje_label.config(text=f"✅ Bienvenido {usuario}!", fg="green")
+        mensaje_label.config(text="")
         ventana_principal.after(2000, ventana_principal.destroy)
     else:
         # 3️⃣ Falló el login: sumamos un intento
