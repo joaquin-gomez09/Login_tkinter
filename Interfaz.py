@@ -9,7 +9,7 @@ ventana_principal.config(padx=35, pady=35) # Generamos un margen interno
 canvas = Canvas(width=256, height=200)
 
 # Carga de imagen PNG desde la ruta especificada
-foto_logo = PhotoImage(file="app_login/imagenes/candado_1.png")
+foto_logo = PhotoImage(file="app_login/imagenes/candado.png")
 
 # Inserta la imagen en el centro del canvas
 canvas.create_image(128, 100, image=foto_logo)
