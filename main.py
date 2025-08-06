@@ -41,6 +41,15 @@ def verificar_login():
         ventana_secundaria.focus()
         ventana_secundaria.grab_set() # Evita que se multipliquen las ventanas
         # ventana_principal.after(2000, ventana_principal.destroy)
+        ventana_tercera = tk.Toplevel()
+        ventana_tercera.title("Imagen")
+        ventana_tercera.config(width=400, height=320)
+        imagen = Image.open("app_login/imagenes/candado_pillow.jpg")
+        imagen_tk = ImageTk.PhotoImage(imagen)
+        label_imagen = tk.Label(ventana_tercera, image=imagen_tk)
+        label_imagen.image = imagen_tk  # ← Esto evita que la imagen se borre
+        label_imagen.pack()
+
     else:
         # 3️⃣ Falló el login: sumamos un intento
         intentos += 1
