@@ -2,6 +2,7 @@ from tkinter import * # Importamos la libreria "Tkinter"
 from tkinter import messagebox # messagebox para dar mensajes de alerta o avisos al usuario
 import tkinter as tk
 from tkinter import ttk
+from PIL import Image, ImageTk
 
 # Credenciales
 USUARIO_CORRECTO = "root"
