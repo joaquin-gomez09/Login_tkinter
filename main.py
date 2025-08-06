@@ -47,8 +47,6 @@ def verificar_login():
         label_imagen.image = imagen_tk  # ← Esto evita que la imagen se borre
         label_imagen.pack()
         boton_cerrar.pack()
-        #boton_cerrar = ttk.Button(ventana_secundaria, text="Salir", command=ventana_secundaria.destroy) # El primer parametro asigna a que ventana se va a mostrar el botón
-        #boton_cerrar.place(x=670, y=600)
         ventana_secundaria.focus()
         ventana_secundaria.grab_set()
     else:
@@ -74,7 +72,7 @@ ventana_principal.minsize(width=300, height=400)
 ventana_principal.config(padx=35, pady=35)
 icono = tk.PhotoImage(file="app_login/imagenes/icono.png")
 ventana_principal.iconphoto(True, icono)
-# ventana_principal.configure(bg="#000000") (cambio de color, por el momento no)
+#ventana_principal.configure(bg="#000000") (cambio de color, por el momento no)
 canvas = Canvas(width=256, height=200)
 foto_logo = PhotoImage(file="app_login/imagenes/candado.png")
 canvas.create_image(128, 100, image=foto_logo)
