@@ -66,6 +66,14 @@ def verificar_login():
             boton_1.config(state="disabled")
             ventana_principal.after(2000, ventana_principal.destroy)
 
+def toggle_password():
+    if char_field_2.cget('show') == '*':
+        char_field_2.config(show='')
+        boton_toggle.config(text="Ocultar")
+    else:
+        char_field_2.config(show='*')
+        boton_toggle.config(text="Mostrar")
+
 ventana_principal = Tk()
 ventana_principal.title("Iniciar sesion")
 ventana_principal.minsize(width=300, height=400)
@@ -98,15 +106,21 @@ char_field_2 = Entry(width=20, font=("Arial", 14), show="*")
 char_field_2.grid(column=0, row=6)
 
 espacio = Label(text="")
-espacio.grid(column=0, row=7)
+espacio.grid(column=0, row=8)
 
-mensaje_label = Label(text="", font=("Arial", 12))
-mensaje_label.grid(column=0, row=10)
+boton_toggle = Button(text="Mostrar", font=("Arial", 10), command=toggle_password)
+boton_toggle.grid(column=0, row=9)
 
-intentos_label = Label(text="Tienes 3 intentos", font=("Arial", 12), fg=colores_intentos[0])
-intentos_label.grid(column=0, row=11)
+espacio = Label(text="")
+espacio.grid(column=0, row=10)
 
 boton_1 = Button(text="Aceptar", font=("Arial", 14), command=verificar_login)
-boton_1.grid(column=0, row=8)
+boton_1.grid(column=0, row=12)
+
+mensaje_label = Label(text="", font=("Arial", 12))
+mensaje_label.grid(column=0, row=13)
+
+intentos_label = Label(text="Tienes 3 intentos", font=("Arial", 12), fg=colores_intentos[0])
+intentos_label.grid(column=0, row=14)
 
 ventana_principal.mainloop()
