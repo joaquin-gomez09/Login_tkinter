@@ -5,6 +5,10 @@ ventana = tk.Tk()
 ventana.title("Prueba de ttk")
 ventana.geometry("800x600")
 
+# Crear un objeto "Style"
+# style = ttk.Style()
+# style.theme_use("nombre-x")
+
 etiqueta = ttk.Label(ventana,
                      text="Hola mundo",
                      font=("Helvetica", 15))
