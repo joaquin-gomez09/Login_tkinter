@@ -34,22 +34,23 @@ def verificar_login():
     if usuario == USUARIO_CORRECTO and contraseña == CLAVE_USUARIO:
         mensaje_label.config(text=f"✅ Bienvenido {usuario}!", fg="green")
         ventana_secundaria = tk.Toplevel()
+        def cerrar_ventanas():
+            ventana_secundaria.destroy()
+            ventana_principal.destroy()
+        boton_cerrar = ttk.Button(ventana_secundaria, text="Salir", command=cerrar_ventanas)
+        boton_cerrar.place(relx=0.5, rely=0.9, anchor="center")
         ventana_secundaria.title("Bienvenido")
         ventana_secundaria.config(width=400, height=320)
-        boton_cerrar = ttk.Button(ventana_secundaria, text="Salir", command=ventana_secundaria.destroy) # El primer parametro asigna a que ventana se va a mostrar el botón
-        boton_cerrar.place(x=150, y=150)
-        ventana_secundaria.focus()
-        ventana_secundaria.grab_set() # Evita que se multipliquen las ventanas
-        # ventana_principal.after(2000, ventana_principal.destroy)
-        ventana_tercera = tk.Toplevel()
-        ventana_tercera.title("Imagen")
-        ventana_tercera.config(width=400, height=320)
         imagen = Image.open("app_login/imagenes/candado_pillow.jpg")
         imagen_tk = ImageTk.PhotoImage(imagen)
-        label_imagen = tk.Label(ventana_tercera, image=imagen_tk)
+        label_imagen = tk.Label(ventana_secundaria, image=imagen_tk)
         label_imagen.image = imagen_tk  # ← Esto evita que la imagen se borre
         label_imagen.pack()
-
+        boton_cerrar.pack()
+        #boton_cerrar = ttk.Button(ventana_secundaria, text="Salir", command=ventana_secundaria.destroy) # El primer parametro asigna a que ventana se va a mostrar el botón
+        #boton_cerrar.place(x=670, y=600)
+        ventana_secundaria.focus()
+        ventana_secundaria.grab_set()
     else:
         # 3️⃣ Falló el login: sumamos un intento
         intentos += 1
