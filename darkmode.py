@@ -17,6 +17,7 @@ switch = ct.CTkSwitch(ventana, text="Dark Mode",
                       onvalue=1,
                       offvalue=0,
                       command=cambiar_modo)
-switch.pack(pady=20)
-
+switch.pack(
+    pady=150  # ajusta la altura vertical
+)
 ventana.mainloop()
