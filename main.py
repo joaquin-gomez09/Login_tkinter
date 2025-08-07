@@ -41,7 +41,7 @@ def verificar_login():
         boton_cerrar.place(relx=0.5, rely=0.9, anchor="center")
         ventana_secundaria.title("Bienvenido")
         ventana_secundaria.config(width=400, height=320)
-        imagen = Image.open("app_login/imagenes/candado.jpg")
+        imagen = Image.open("app_login/imagenes/construccion.jpg")
         imagen_tk = ImageTk.PhotoImage(imagen)
         label_imagen = tk.Label(ventana_secundaria, image=imagen_tk)
         label_imagen.image = imagen_tk  # ← Esto evita que la imagen se borre
@@ -87,7 +87,7 @@ canvas.create_image(128, 100, image=foto_logo)
 canvas.image = foto_logo
 canvas.grid(column=0, row=0)
 
-# 🎨 Estilos personalizados
+# Objeto de estilos
 style = ttk.Style()
 style.theme_use(style.theme_use())  # Mantiene el tema del sistema
 
