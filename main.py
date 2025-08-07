@@ -87,40 +87,44 @@ canvas.create_image(128, 100, image=foto_logo)
 canvas.image = foto_logo
 canvas.grid(column=0, row=0)
 
-label_1 = Label(text="Escribe tu nombre de usuario", font=("Arial", 14))
+# 🎨 Estilos personalizados
+style = ttk.Style()
+style.theme_use(style.theme_use())  # Mantiene el tema del sistema
+
+style.configure("Custom.TLabel", font=("Arial", 14))
+style.configure("Custom.TEntry", font=("Arial", 14))
+style.configure("Custom.TButton", font=("Arial", 12), padding=6)
+
+label_1 = ttk.Label(text="Escribe tu nombre de usuario", style="Custom.TLabel")
 label_1.grid(column=0, row=1)
 
-espacio = Label(text="")
-espacio.grid(column=0, row=2)
+Label(text="").grid(column=0, row=2)
 
-char_field_1 = Entry(width=20, font=("Arial", 14))
+char_field_1 = ttk.Entry(width=40, style="Custom.TEntry")
 char_field_1.grid(column=0, row=3)
 
-espacio = Label(text="")
-espacio.grid(column=0, row=4)
+Label(text="").grid(column=0, row=4)
 
-label_2 = Label(text="Escribe tu contraseña", font=("Arial", 14)) # Creamos una segunda linea de texto y otro campo de texto
+label_2 = ttk.Label(text="Escribe tu contraseña", style="Custom.TLabel")
 label_2.grid(column=0, row=5)
 
-char_field_2 = Entry(width=20, font=("Arial", 14), show="*")
+char_field_2 = ttk.Entry(width=40, style="Custom.TEntry", show="*")
 char_field_2.grid(column=0, row=6)
 
-espacio = Label(text="")
-espacio.grid(column=0, row=8)
+Label(text="").grid(column=0, row=8)
 
-boton_toggle = Button(text="Mostrar", font=("Arial", 10), command=toggle_password)
+boton_toggle = ttk.Button(text="Mostrar", style="Custom.TButton", command=toggle_password)
 boton_toggle.grid(column=0, row=9)
 
-espacio = Label(text="")
-espacio.grid(column=0, row=10)
+Label(text="").grid(column=0, row=10)
 
-boton_1 = Button(text="Aceptar", font=("Arial", 14), command=verificar_login)
+boton_1 = ttk.Button(text="Aceptar", style="Custom.TButton", command=verificar_login)
 boton_1.grid(column=0, row=12)
 
 mensaje_label = Label(text="", font=("Arial", 12))
 mensaje_label.grid(column=0, row=13)
 
-intentos_label = Label(text="Tienes 3 intentos", font=("Arial", 12), fg=colores_intentos[0])
+intentos_label = tk.Label(text="Tienes 3 intentos", font=("Arial", 12), foreground=colores_intentos[0])
 intentos_label.grid(column=0, row=14)
 
 ventana_principal.mainloop()
