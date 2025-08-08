@@ -18,10 +18,23 @@ switch = ct.CTkSwitch(ventana, text="Dark Mode",
                       offvalue=0,
                       command=cambiar_modo)
 switch.place(
-    relx=0.5,      # 50% del ancho
-    rely=0.5,      # 50% de la altura
+    relx=0.1,      # 50% del ancho
+    rely=0.1,      # 50% de la altura
+    anchor="n"
+)
+
+def boton():
+    print("¡Boton oprimido!")
+
+boton_1 = ct.CTkButton(ventana, text="Boton",
+                     command=boton)
+
+boton_1.place(
+    relx=0.5,
+    rely=0.5,
     anchor="center"
 )
+
 ventana.mainloop()
 
 #switch.pack(
