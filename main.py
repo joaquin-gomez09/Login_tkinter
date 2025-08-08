@@ -34,21 +34,28 @@ def verificar_login():
     if usuario == USUARIO_CORRECTO and contraseña == CLAVE_USUARIO:
         mensaje_label.config(text=f"✅ Bienvenido {usuario}!", fg="green")
         ventana_secundaria = tk.Toplevel()
+        
         def cerrar_ventanas():
             ventana_secundaria.destroy()
             ventana_principal.destroy()
-        boton_cerrar = ttk.Button(ventana_secundaria, text="Salir", command=cerrar_ventanas)
-        boton_cerrar.place(relx=0.5, rely=0.9, anchor="center")
+
         ventana_secundaria.title("Bienvenido")
         ventana_secundaria.config(width=400, height=320)
+        ventana_secundaria.focus()
+        ventana_secundaria.grab_set()
+
         imagen = Image.open("app_login/imagenes/construccion.jpg")
         imagen_tk = ImageTk.PhotoImage(imagen)
+
         label_imagen = tk.Label(ventana_secundaria, image=imagen_tk)
         label_imagen.image = imagen_tk  # ← Esto evita que la imagen se borre
         label_imagen.pack()
+
+        boton_cerrar = ttk.Button(ventana_secundaria,text="Salir", command=cerrar_ventanas)
+        boton_cerrar.place(relx=0.5, rely=0.9, anchor="center")
         boton_cerrar.pack()
-        ventana_secundaria.focus()
-        ventana_secundaria.grab_set()
+
+
     else:
         # 3️⃣ Falló el login: sumamos un intento
         intentos += 1
@@ -81,6 +88,7 @@ ventana_principal.config(padx=35, pady=35)
 icono = tk.PhotoImage(file="app_login/imagenes/icono.png")
 ventana_principal.iconphoto(True, icono)
 #ventana_principal.configure(bg="#000000") (cambio de color, por el momento no)
+
 canvas = Canvas(width=256, height=200)
 foto_logo = PhotoImage(file="app_login/imagenes/candado.png")
 canvas.create_image(128, 100, image=foto_logo)
