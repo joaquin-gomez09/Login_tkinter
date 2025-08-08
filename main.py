@@ -57,19 +57,15 @@ def verificar_login():
 
 
     else:
-        # 3️⃣ Falló el login: sumamos un intento
-        intentos += 1
+        intentos += 1 # 3️⃣ Falló el login: sumamos un intento
         intentos_restantes = 3 - intentos
 
-        # Cambiamos el mensaje principal a rojo
-        mensaje_label.config(text="❌ Usuario o contraseña incorrectos", fg="red")
+        mensaje_label.config(text="❌ Usuario o contraseña incorrectos", fg="red") # Cambiamos el mensaje principal a rojo
 
-        # Cambiamos el label de intentos
-        if intentos < 3:
+        if intentos < 3: # Cambiamos el label de intentos
             intentos_label.config(text=f"Te quedan {intentos_restantes} intentos", fg=colores_intentos[intentos])
         else:
-            # Si ya falló 3 veces, bloqueamos
-            intentos_label.config(text="🚨 Demasiados intentos. Bloqueado.", fg=colores_intentos[3])
+            intentos_label.config(text="🚨 Demasiados intentos. Bloqueado.", fg=colores_intentos[3]) # Si ya falló 3 veces, bloqueamos
             boton_1.config(state="disabled")
             ventana_principal.after(2000, ventana_principal.destroy)
 
@@ -85,9 +81,9 @@ ventana_principal = Tk()
 ventana_principal.title("Iniciar sesion")
 ventana_principal.minsize(width=300, height=400)
 ventana_principal.config(padx=35, pady=35)
+
 icono = tk.PhotoImage(file="app_login/imagenes/icono.png")
 ventana_principal.iconphoto(True, icono)
-#ventana_principal.configure(bg="#000000") (cambio de color, por el momento no)
 
 canvas = Canvas(width=256, height=200)
 foto_logo = PhotoImage(file="app_login/imagenes/candado.png")
