@@ -6,6 +6,7 @@ ct.set_appearance_mode("light")  # Modo inicial
 ventana = ct.CTk()
 ventana.geometry("600x400+250+200")
 ventana.title("Dark Mode")
+ventana.iconbitmap("app_login/imagenes/icono.ico")
 
 def cambiar_modo():
     val = switch.get()
