@@ -1,4 +1,5 @@
 import customtkinter as ct
+import tkinter
 
 ct.set_appearance_mode("light")  # Modo inicial
 
@@ -17,11 +18,11 @@ switch = ct.CTkSwitch(ventana, text="Dark Mode",
                       onvalue=1,
                       offvalue=0,
                       command=cambiar_modo)
+
 switch.place(
     relx=0.1,      # 50% del ancho
     rely=0.1,      # 50% de la altura
-    anchor="n"
-)
+    anchor=tkinter.N)
 
 def boton():
     print("¡Boton oprimido!")
@@ -32,8 +33,7 @@ boton_1 = ct.CTkButton(ventana, text="Boton",
 boton_1.place(
     relx=0.5,
     rely=0.5,
-    anchor="center"
-)
+    anchor=tkinter.CENTER)
 
 ventana.mainloop()
 
