@@ -24,6 +24,14 @@ switch.place(
     rely=0.1,      # 50% de la altura
     anchor=tkinter.N)
 
+# Línea divisoria vertical
+linea = ct.CTkFrame(ventana, width=2, height=350, fg_color="gray")
+linea.place(
+    relx=0.25,  # Ajusta la posición horizontal
+    rely=0.05,  # Ajusta la posición vertical
+    anchor=tkinter.NW
+)
+
 def boton():
     print("¡Boton oprimido!")
 
