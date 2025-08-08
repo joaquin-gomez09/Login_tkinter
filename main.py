@@ -1,13 +1,8 @@
 from tkinter import * # Importamos la libreria "Tkinter"
 from tkinter import messagebox # messagebox para dar mensajes de alerta o avisos al usuario
-import customtkinter as ctk
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
-
-# Configurar modo de apariencia y tema
-ctk.set_appearance_mode("dark")  # Opciones: "light", "dark", "system"
-ctk.set_default_color_theme("blue")  # Temas: "blue", "green", "dark-blue"
 
 # Credenciales
 USUARIO_CORRECTO = "root"
@@ -38,11 +33,11 @@ def verificar_login():
 
     if usuario == USUARIO_CORRECTO and contraseña == CLAVE_USUARIO:
         mensaje_label.config(text=f"✅ Bienvenido {usuario}!", fg="green")
-        ventana_secundaria = ctk.CTkToplevel()
+        ventana_secundaria = tk.Toplevel()
         def cerrar_ventanas():
             ventana_secundaria.destroy()
             ventana_principal.destroy()
-        boton_cerrar = ctk.CTkButton(ventana_secundaria, text="Salir", command=cerrar_ventanas)
+        boton_cerrar = ttk.Button(ventana_secundaria, text="Salir", command=cerrar_ventanas)
         boton_cerrar.place(relx=0.5, rely=0.9, anchor="center")
         ventana_secundaria.title("Bienvenido")
         ventana_secundaria.config(width=400, height=320)
