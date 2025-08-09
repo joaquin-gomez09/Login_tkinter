@@ -4,7 +4,7 @@ contraseña_correcta = "123"
 for intento in range(3):
     usuario = input("Ingresar nombre de usuario: ").lower()
     
-    if usuario == "guido":
+    if usuario == usuario_correcto:
             print("")
             print("👤✅ Usuario correcto\n")
             break
@@ -17,7 +17,7 @@ else:
 
 for intento in range(3):
     contraseña = input("Ingresar contraseña: ")
-    if contraseña == "python123":
+    if contraseña == contraseña_correcta:
             print("")
             print("🔓 Acceso concedido\n")
             print(f"Bienvenido {usuario}! \n")
