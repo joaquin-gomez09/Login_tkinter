@@ -54,7 +54,6 @@ def verificar_login():
 
         boton_cerrar = ttk.Button(ventana_secundaria,text="Salir", command=cerrar_ventanas)
         boton_cerrar.place(relx=0.5, rely=0.9, anchor="center")
-        boton_cerrar.pack()
 
 
     else:
