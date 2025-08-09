@@ -1,133 +1,128 @@
-from tkinter import * # Importamos la libreria "Tkinter"
-from tkinter import messagebox # messagebox para dar mensajes de alerta o avisos al usuario
-import tkinter as tk
-from tkinter import ttk
-from PIL import Image, ImageTk
+import customtkinter as ctk
+from tkinter import messagebox
+from PIL import Image
+
+# Configuración inicial de CustomTkinter
+ctk.set_appearance_mode("System")  # Puede ser "Light", "Dark", o "System"
+ctk.set_default_color_theme("blue")  # Puedes cambiar el tema si lo deseas
 
 # Credenciales
 USUARIO_CORRECTO = "root"
 CLAVE_USUARIO = "123"
 
 # Contador
-
 intentos = 0
 
 # Colores según intentos
 colores_intentos = {
-    0: "#555555",  # gris oscuro (sin errores)
-    1: "#FF9900",  # naranja (primer error)
-    2: "#FF3300",  # rojo fuerte (segundo error)
-    3: "#CC0000"   # rojo oscuro (bloqueado)
+    0: "#555555",
+    1: "#FF9900",
+    2: "#FF3300",
+    3: "#CC0000"
 }
 
 # Función para verificar Login
-
 def verificar_login():
     global intentos
     usuario = char_field_1.get()
     contraseña = char_field_2.get()
 
     if not usuario or not contraseña:
-        messagebox.showwarning("Campos vacíos", "Por favor completa todos los campos.") # El primer parametro es el titulo
+        messagebox.showwarning("Campos vacíos", "Por favor completa todos los campos.")
         return
 
     if usuario == USUARIO_CORRECTO and contraseña == CLAVE_USUARIO:
-        mensaje_label.config(text=f"✅ Bienvenido {usuario}!", fg="green")
-        ventana_secundaria = tk.Toplevel()
-        
-        def cerrar_ventanas():
-            ventana_secundaria.destroy()
-            ventana_principal.destroy()
+        mensaje_label.configure(text=f"✅ Bienvenido {usuario}!", text_color="green")
+        ventana_secundaria = ctk.CTkToplevel()
 
         ventana_secundaria.title("Bienvenido")
-        ventana_secundaria.config(width=400, height=320)
+        ventana_secundaria.geometry("400x320")
         ventana_secundaria.iconbitmap("app_login/imagenes/icono.ico")
         ventana_secundaria.focus()
         ventana_secundaria.grab_set()
 
-        imagen = Image.open("app_login/imagenes/construccion.jpg")
-        imagen_tk = ImageTk.PhotoImage(imagen)
+        def cerrar_ventanas():
+            ventana_secundaria.destroy()
+            ventana_principal.destroy()
 
-        label_imagen = tk.Label(ventana_secundaria, image=imagen_tk)
-        label_imagen.image = imagen_tk  # ← Esto evita que la imagen se borre
+        # Imagen en ventana secundaria
+        imagen_ctk = ctk.CTkImage(light_image=Image.open("app_login/imagenes/construccion.jpg"), size=(400, 240))
+        label_imagen = ctk.CTkLabel(ventana_secundaria, image=imagen_ctk, text="")
+        label_imagen.image = imagen_ctk
         label_imagen.pack()
 
-        boton_cerrar = ttk.Button(ventana_secundaria,text="Salir", command=cerrar_ventanas)
+        boton_cerrar = ctk.CTkButton(ventana_secundaria, text="Salir", command=cerrar_ventanas)
         boton_cerrar.place(relx=0.5, rely=0.9, anchor="center")
         boton_cerrar.pack()
 
-
     else:
-        intentos += 1 # 3️⃣ Falló el login: sumamos un intento
+        intentos += 1
         intentos_restantes = 3 - intentos
 
-        mensaje_label.config(text="❌ Usuario o contraseña incorrectos", fg="red") # Cambiamos el mensaje principal a rojo
+        mensaje_label.configure(text="❌ Usuario o contraseña incorrectos", text_color="red")
 
-        if intentos < 3: # Cambiamos el label de intentos
-            intentos_label.config(text=f"Te quedan {intentos_restantes} intentos", fg=colores_intentos[intentos])
+        if intentos < 3:
+            intentos_label.configure(text=f"Te quedan {intentos_restantes} intentos", text_color=colores_intentos[intentos])
         else:
-            intentos_label.config(text="🚨 Demasiados intentos. Bloqueado.", fg=colores_intentos[3]) # Si ya falló 3 veces, bloqueamos
-            boton_1.config(state="disabled")
+            intentos_label.configure(text="🚨 Demasiados intentos. Bloqueado.", text_color=colores_intentos[3])
+            boton_1.configure(state="disabled")
             ventana_principal.after(2000, ventana_principal.destroy)
 
 def toggle_password():
     if char_field_2.cget('show') == '*':
-        char_field_2.config(show='')
-        boton_toggle.config(text="Ocultar")
+        char_field_2.configure(show='')
+        boton_toggle.configure(text="Ocultar")
     else:
-        char_field_2.config(show='*')
-        boton_toggle.config(text="Mostrar")
+        char_field_2.configure(show='*')
+        boton_toggle.configure(text="Mostrar")
 
-ventana_principal = Tk()
+# Ventana principal
+ventana_principal = ctk.CTk()
 ventana_principal.title("Iniciar sesion")
 ventana_principal.minsize(width=300, height=400)
-ventana_principal.config(padx=35, pady=35)
+ventana_principal.geometry("400x500")
 ventana_principal.iconbitmap("app_login/imagenes/icono.ico")
+ventana_principal.grid_columnconfigure(0, weight=1)
 
-canvas = Canvas(width=256, height=200)
-foto_logo = PhotoImage(file="app_login/imagenes/candado.png")
-canvas.create_image(128, 100, image=foto_logo)
-canvas.image = foto_logo
-canvas.grid(column=0, row=0)
+# Logo principal
+logo_image = ctk.CTkImage(light_image=Image.open("app_login/imagenes/candado.png"), size=(130, 130))
+canvas = ctk.CTkLabel(ventana_principal, image=logo_image, text="")
+canvas.image = logo_image
+canvas.grid(row=0, column=0)
 
-# Objeto de estilos
-style = ttk.Style()
-style.theme_use(style.theme_use())  # Mantiene el tema del sistema
+# Widgets
 
-style.configure("Custom.TLabel", font=("Arial", 14))
-style.configure("Custom.TEntry", font=("Arial", 14))
-style.configure("Custom.TButton", font=("Arial", 12), padding=6)
+ctk.CTkLabel(ventana_principal, text="").grid(row=1, column=0)
 
-label_1 = ttk.Label(text="Escribe tu nombre de usuario", style="Custom.TLabel")
-label_1.grid(column=0, row=1)
+label_1 = ctk.CTkLabel(ventana_principal, text="Escribe tu nombre de usuario", font=("Arial", 14))
+label_1.grid(row=2, column=0)
 
-Label(text="").grid(column=0, row=2)
 
-char_field_1 = ttk.Entry(width=40, style="Custom.TEntry")
-char_field_1.grid(column=0, row=3)
+char_field_1 = ctk.CTkEntry(ventana_principal, width=240, font=("Arial", 14))
+char_field_1.grid(row=3, column=0)
 
-Label(text="").grid(column=0, row=4)
+ctk.CTkLabel(ventana_principal, text="").grid(row=4, column=0)
 
-label_2 = ttk.Label(text="Escribe tu contraseña", style="Custom.TLabel")
-label_2.grid(column=0, row=5)
+label_2 = ctk.CTkLabel(ventana_principal, text="Escribe tu contraseña", font=("Arial", 14))
+label_2.grid(row=5, column=0)
 
-char_field_2 = ttk.Entry(width=40, style="Custom.TEntry", show="*")
-char_field_2.grid(column=0, row=6)
+char_field_2 = ctk.CTkEntry(ventana_principal, width=240, font=("Arial", 14), show="*")
+char_field_2.grid(row=6, column=0)
 
-Label(text="").grid(column=0, row=8)
+ctk.CTkLabel(ventana_principal, text="").grid(row=8, column=0)
 
-boton_toggle = ttk.Button(text="Mostrar", style="Custom.TButton", command=toggle_password)
-boton_toggle.grid(column=0, row=9)
+boton_toggle = ctk.CTkButton(ventana_principal, text="Mostrar", font=("Arial", 12), command=toggle_password)
+boton_toggle.grid(row=9, column=0)
 
-Label(text="").grid(column=0, row=10)
+ctk.CTkLabel(ventana_principal, text="").grid(row=10, column=0)
 
-boton_1 = ttk.Button(text="Aceptar", style="Custom.TButton", command=verificar_login)
-boton_1.grid(column=0, row=12)
+boton_1 = ctk.CTkButton(ventana_principal, text="Aceptar", font=("Arial", 12), command=verificar_login)
+boton_1.grid(row=12, column=0)
 
-mensaje_label = Label(text="", font=("Arial", 12))
-mensaje_label.grid(column=0, row=13)
+mensaje_label = ctk.CTkLabel(ventana_principal, text="", font=("Arial", 12))
+mensaje_label.grid(row=13, column=0)
 
-intentos_label = tk.Label(text="Tienes 3 intentos", font=("Arial", 12), foreground=colores_intentos[0])
-intentos_label.grid(column=0, row=14)
+intentos_label = ctk.CTkLabel(ventana_principal, text="Tienes 3 intentos", font=("Arial", 12), text_color=colores_intentos[0])
+intentos_label.grid(row=14, column=0)
 
 ventana_principal.mainloop()
