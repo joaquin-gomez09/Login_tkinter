@@ -41,6 +41,7 @@ def verificar_login():
 
         ventana_secundaria.title("Bienvenido")
         ventana_secundaria.config(width=400, height=320)
+        ventana_secundaria.iconbitmap("app_login/imagenes/icono.ico")
         ventana_secundaria.focus()
         ventana_secundaria.grab_set()
 
