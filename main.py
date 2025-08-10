@@ -1,10 +1,12 @@
 import customtkinter as ctk
 from tkinter import messagebox
+from tkinter import Toplevel  # Importar Toplevel de tkinter
 from PIL import Image
+import os
 
 # Configuración inicial de CustomTkinter
-ctk.set_appearance_mode("System")  # Puede ser "Light", "Dark", o "System"
-ctk.set_default_color_theme("blue")  # Puedes cambiar el tema si lo deseas
+ctk.set_appearance_mode("System")
+ctk.set_default_color_theme("blue")
 
 # Credenciales
 USUARIO_CORRECTO = "root"
@@ -33,11 +35,17 @@ def verificar_login():
 
     if usuario == USUARIO_CORRECTO and contraseña == CLAVE_USUARIO:
         mensaje_label.configure(text=f"✅ Bienvenido {usuario}!", text_color="green")
-        ventana_secundaria = ctk.CTkToplevel()
 
+        # Crear ventana secundaria con tkinter
+        ventana_secundaria = Toplevel()
         ventana_secundaria.title("Bienvenido")
         ventana_secundaria.geometry("800x600")
-        ventana_secundaria.iconbitmap("app_login/imagenes/icono.ico")
+
+        # Ruta absoluta del ícono
+        ruta_icono = os.path.abspath("app_login/imagenes/icono.ico")
+        ventana_secundaria.iconbitmap(ruta_icono)
+        #print(ruta_icono)
+
         ventana_secundaria.focus()
         ventana_secundaria.grab_set()
 
@@ -45,15 +53,18 @@ def verificar_login():
             ventana_secundaria.destroy()
             ventana_principal.destroy()
 
+        # Frame CTk dentro de la ventana secundaria
+        frame_secundario = ctk.CTkFrame(master=ventana_secundaria)
+        frame_secundario.pack(fill="both", expand=True)
+
         # Imagen en ventana secundaria
         imagen_ctk = ctk.CTkImage(light_image=Image.open("app_login/imagenes/construccion.jpg"), size=(700, 550))
-        label_imagen = ctk.CTkLabel(ventana_secundaria, image=imagen_ctk, text="")
-        label_imagen.image = imagen_ctk
+        label_imagen = ctk.CTkLabel(frame_secundario, image=imagen_ctk, text="")
         label_imagen.pack()
 
-        boton_cerrar = ctk.CTkButton(ventana_secundaria, text="Salir", command=cerrar_ventanas)
-        boton_cerrar.place(relx=0.5, rely=0.9, anchor="center")
-        boton_cerrar.pack()
+        # Botón cerrar
+        boton_cerrar = ctk.CTkButton(frame_secundario, text="Salir", command=cerrar_ventanas)
+        boton_cerrar.pack(pady=10)
 
     else:
         intentos += 1
@@ -78,7 +89,7 @@ def toggle_password():
 
 # Ventana principal
 ventana_principal = ctk.CTk()
-ventana_principal.title("Iniciar sesion")
+ventana_principal.title("Iniciar sesión")
 ventana_principal.minsize(width=300, height=400)
 ventana_principal.geometry("400x500")
 ventana_principal.iconbitmap("app_login/imagenes/icono.ico")
@@ -87,16 +98,13 @@ ventana_principal.grid_columnconfigure(0, weight=1)
 # Logo principal
 logo_image = ctk.CTkImage(light_image=Image.open("app_login/imagenes/candado.png"), size=(130, 130))
 canvas = ctk.CTkLabel(ventana_principal, image=logo_image, text="")
-canvas.image = logo_image
 canvas.grid(row=0, column=0)
 
 # Widgets
-
 ctk.CTkLabel(ventana_principal, text="").grid(row=1, column=0)
 
 label_1 = ctk.CTkLabel(ventana_principal, text="Escribe tu nombre de usuario", font=("Arial", 14))
 label_1.grid(row=2, column=0)
-
 
 char_field_1 = ctk.CTkEntry(ventana_principal, width=240, font=("Arial", 14))
 char_field_1.grid(row=3, column=0)
