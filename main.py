@@ -38,7 +38,7 @@ def verificar_login():
 
         # Crear ventana secundaria con tkinter
         ventana_secundaria = Toplevel()
-        ventana_secundaria.title("Bienvenido")
+        ventana_secundaria.title("App")
         ventana_secundaria.geometry("800x600")
 
         # Ruta absoluta del ícono
