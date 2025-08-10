@@ -54,7 +54,7 @@ def verificar_login():
             ventana_principal.destroy()
 
         # Frame CTk dentro de la ventana secundaria
-        frame_secundario = ctk.CTkFrame(master=ventana_secundaria)
+        frame_secundario = ctk.CTkFrame(master=ventana_secundaria, fg_color="black")
         frame_secundario.pack(fill="both", expand=True)
 
         # Imagen en ventana secundaria
