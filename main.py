@@ -36,7 +36,7 @@ def verificar_login():
         ventana_secundaria = ctk.CTkToplevel()
 
         ventana_secundaria.title("Bienvenido")
-        ventana_secundaria.geometry("400x320")
+        ventana_secundaria.geometry("800x600")
         ventana_secundaria.iconbitmap("app_login/imagenes/icono.ico")
         ventana_secundaria.focus()
         ventana_secundaria.grab_set()
@@ -46,7 +46,7 @@ def verificar_login():
             ventana_principal.destroy()
 
         # Imagen en ventana secundaria
-        imagen_ctk = ctk.CTkImage(light_image=Image.open("app_login/imagenes/construccion.jpg"), size=(400, 240))
+        imagen_ctk = ctk.CTkImage(light_image=Image.open("app_login/imagenes/construccion.jpg"), size=(700, 550))
         label_imagen = ctk.CTkLabel(ventana_secundaria, image=imagen_ctk, text="")
         label_imagen.image = imagen_ctk
         label_imagen.pack()
