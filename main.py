@@ -91,7 +91,7 @@ def toggle_password():
 ventana_principal = ctk.CTk()
 ventana_principal.title("Iniciar sesión")
 ventana_principal.minsize(width=300, height=400)
-ventana_principal.geometry("400x500")
+ventana_principal.geometry("450x480")
 ventana_principal.iconbitmap("app_login/imagenes/icono.ico")
 ventana_principal.grid_columnconfigure(0, weight=1)
 
