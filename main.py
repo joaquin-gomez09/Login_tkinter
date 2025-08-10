@@ -5,7 +5,7 @@ from PIL import Image
 import os
 
 # Configuración inicial de CustomTkinter
-ctk.set_appearance_mode("System")
+ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
 
 # Credenciales
