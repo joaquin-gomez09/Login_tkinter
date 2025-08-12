@@ -37,8 +37,19 @@ def inicializar_bd():
         )
     """)
 
-inicializar_bd()
+def hash_password(password: str):
+    return hashlib.sha256(password.encode("utf-8")).hexdigest()
 
+def agregar_usuarios(username: str, password: str):
+    conn = sqlite3.connect("usuarios.db")
+    cursor = conn.cursor()
+    pwd_hash = hash_password(password)
+    cursor.execute("INSERT INTO usuarios (username, password_hash) VALUES (?,?)",
+                   (username, pwd_hash))
+    conn.commit()
+    conn.close()
+
+inicializar_bd()
 # Función para verificar Login
 def verificar_login():
     global intentos
