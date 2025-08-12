@@ -4,6 +4,7 @@ from tkinter import Toplevel  # Importar Toplevel de tkinter
 from PIL import Image
 import os
 import sqlite3
+import hashlib
 
 # Configuración inicial de CustomTkinter
 ctk.set_appearance_mode("Dark")
@@ -24,6 +25,7 @@ colores_intentos = {
     3: "#CC0000"
 }
 
+# Creación de base de datos
 def inicializar_bd():
     conn = sqlite3.connect("usuarios.db")
     cursor = conn.cursor()
