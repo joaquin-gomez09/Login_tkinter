@@ -64,7 +64,7 @@ python identificacion.py
 ## 🛠️ Posibles mejoras
 
 - ✅ Validar los datos ingresados y mostrar un mensaje de éxito o error.
-- Conectar con una base de datos para verificar credenciales.
+- ✅Conectar con una base de datos para verificar credenciales.
 - ✅ Añadir estilos personalizados con `ttk` o temas.
 - ✅ Implementar navegación a otra ventana tras el inicio de sesión.
 - ✅ Migrar el proyecto a una GUI mas moderna (CTk)
