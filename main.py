@@ -160,7 +160,7 @@ def toggle_password():
 # Ventana principal
 ventana_principal = ctk.CTk()
 ventana_principal.title("Iniciar sesión")
-ventana_principal.minsize(width=300, height=400)
+ventana_principal.minsize(width=300, height=550)
 ventana_principal.geometry("450x480")
 ventana_principal.iconbitmap("app_login/imagenes/icono.ico")
 ventana_principal.grid_columnconfigure(0, weight=1)
@@ -192,21 +192,22 @@ ctk.CTkLabel(ventana_principal, text="").grid(row=8, column=0)
 boton_toggle = ctk.CTkButton(ventana_principal, text="Mostrar", font=("Arial", 12), command=toggle_password)
 boton_toggle.grid(row=9, column=0)
 
-ctk.CTkLabel(ventana_principal, text="").grid(row=10, column=0)
-
-boton_1 = ctk.CTkButton(ventana_principal, text="Aceptar", font=("Arial", 12), command=verificar_login)
-boton_1.grid(row=12, column=0)
-
 mensaje_label = ctk.CTkLabel(ventana_principal, text="", font=("Arial", 12))
-mensaje_label.grid(row=13, column=0)
+mensaje_label.grid(row=10, column=0)
 
 boton_registro = ctk.CTkButton(ventana_principal, text="Registrarse", command=abrir_ventana_registro)
 boton_registro.grid(row=11, column=0, pady=5)
 
 mensaje_label = ctk.CTkLabel(ventana_principal, text="", font=("Arial", 12))
-mensaje_label.grid(row=13, column=0)
+mensaje_label.grid(row=12, column=0)
+
+boton_1 = ctk.CTkButton(ventana_principal, text="Aceptar", font=("Arial", 12), command=verificar_login)
+boton_1.grid(row=13, column=0)
+
+mensaje_label = ctk.CTkLabel(ventana_principal, text="", font=("Arial", 12))
+mensaje_label.grid(row=14, column=0)
 
 intentos_label = ctk.CTkLabel(ventana_principal, text="Tienes 3 intentos", font=("Arial", 12), text_color=colores_intentos[0])
-intentos_label.grid(row=14, column=0)
+intentos_label.grid(row=15, column=0)
 
 ventana_principal.mainloop()
