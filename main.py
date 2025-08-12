@@ -29,8 +29,8 @@ colores_intentos = {
 def inicializar_bd():
     conn = sqlite3.connect("usuarios.db")
     cursor = conn.cursor()
-    cursor.execute(""""
-        CREATE TABLE IF NOT EXIST usuarios (
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS usuarios (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE NOT NULL,
             password_hash TEXT NOT NULL
@@ -49,6 +49,17 @@ def agregar_usuarios(username: str, password: str):
     conn.commit()
     conn.close()
 
+def verificar_usuario_bd(username,password):
+    conn = sqlite3.connect("usuarios.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT password_hash FROM usuarios WHERE username = ?", (username))
+    fila = cursor.fetchone()
+    conn.close()
+    if not fila:
+        return False
+    return fila[0] == hash_password(password)
+
+
 inicializar_bd()
 # Función para verificar Login
 def verificar_login():
@@ -60,7 +71,7 @@ def verificar_login():
         messagebox.showwarning("Campos vacíos", "Por favor completa todos los campos.")
         return
 
-    if usuario == USUARIO_CORRECTO and contraseña == CLAVE_USUARIO:
+    if verificar_usuario_bd(usuario,contraseña):
         mensaje_label.configure(text=f"✅ Bienvenido {usuario}!", text_color="green")
 
         # Crear ventana secundaria con tkinter
