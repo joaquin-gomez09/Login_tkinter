@@ -10,10 +10,6 @@ import hashlib
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
 
-# Credenciales
-USUARIO_CORRECTO = "root"
-CLAVE_USUARIO = "123"
-
 # Contador
 intentos = 0
 
@@ -58,6 +54,34 @@ def verificar_usuario_bd(username,password):
     if not fila:
         return False
     return fila[0] == hash_password(password)
+
+def abrir_ventana_registro():
+    ventana_registro = Toplevel()
+    ventana_registro.title("Registro de usuario")
+    ventana_registro.geometry("400x300")
+
+    ctk.CTkLabel(ventana_registro, text="Nuevo usuario").pack(pady=10)
+    entry_usuario = ctk.CTkEntry(ventana_registro, placeholder_text="Nombre de usuario")
+    entry_usuario.pack(pady=5)
+
+    ctk.CTkLabel(ventana_registro, text="Contraseña").pack(pady=10)
+    entry_contraseña = ctk.CTkEntry(ventana_registro, placeholder_text="Contraseña", show="*")
+    entry_contraseña.pack(pady=5)
+
+    def registrar():
+        usuario = entry_usuario.get()
+        contraseña = entry_contraseña.get()
+        if not usuario or not contraseña:
+            messagebox.showwarning("Campos vacíos", "Completa todos los campos.")
+            return
+        try:
+            agregar_usuarios(usuario, contraseña)
+            messagebox.showinfo("Éxito", "Usuario registrado correctamente.")
+            ventana_registro.destroy()
+        except sqlite3.IntegrityError:
+            messagebox.showerror("Error", "El usuario ya existe.")
+
+    ctk.CTkButton(ventana_registro, text="Registrar", command=registrar).pack(pady=20)
 
 
 inicializar_bd()
@@ -164,6 +188,12 @@ ctk.CTkLabel(ventana_principal, text="").grid(row=10, column=0)
 
 boton_1 = ctk.CTkButton(ventana_principal, text="Aceptar", font=("Arial", 12), command=verificar_login)
 boton_1.grid(row=12, column=0)
+
+mensaje_label = ctk.CTkLabel(ventana_principal, text="", font=("Arial", 12))
+mensaje_label.grid(row=13, column=0)
+
+boton_registro = ctk.CTkButton(ventana_principal, text="Registrarse", command=abrir_ventana_registro)
+boton_registro.grid(row=11, column=0, pady=5)
 
 mensaje_label = ctk.CTkLabel(ventana_principal, text="", font=("Arial", 12))
 mensaje_label.grid(row=13, column=0)
