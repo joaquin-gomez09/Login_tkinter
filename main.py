@@ -52,7 +52,7 @@ def agregar_usuarios(username: str, password: str):
 def verificar_usuario_bd(username,password):
     conn = sqlite3.connect("usuarios.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT password_hash FROM usuarios WHERE username = ?", (username))
+    cursor.execute("SELECT password_hash FROM usuarios WHERE username = ?", (username,))
     fila = cursor.fetchone()
     conn.close()
     if not fila:
