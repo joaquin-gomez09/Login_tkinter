@@ -59,13 +59,21 @@ def abrir_ventana_registro():
     ventana_registro = Toplevel()
     ventana_registro.title("Registro de usuario")
     ventana_registro.geometry("400x300")
+    ventana_registro.configure(bg="#2b2b2b")  # Fondo oscuro para la ventana base
 
-    ctk.CTkLabel(ventana_registro, text="Nuevo usuario").pack(pady=10)
-    entry_usuario = ctk.CTkEntry(ventana_registro, placeholder_text="Nombre de usuario")
+    ruta_icono = os.path.abspath("app_login/imagenes/icono.ico")
+    ventana_registro.iconbitmap(ruta_icono)
+
+    # Frame principal con estilo CTk
+    frame_registro = ctk.CTkFrame(master=ventana_registro)
+    frame_registro.pack(fill="both", expand=True, padx=20, pady=20)
+
+    ctk.CTkLabel(frame_registro, text="Nuevo usuario").pack(pady=10)
+    entry_usuario = ctk.CTkEntry(frame_registro, placeholder_text="Nombre de usuario")
     entry_usuario.pack(pady=5)
 
-    ctk.CTkLabel(ventana_registro, text="Contraseña").pack(pady=10)
-    entry_contraseña = ctk.CTkEntry(ventana_registro, placeholder_text="Contraseña", show="*")
+    ctk.CTkLabel(frame_registro, text="Contraseña").pack(pady=10)
+    entry_contraseña = ctk.CTkEntry(frame_registro, placeholder_text="Contraseña", show="*")
     entry_contraseña.pack(pady=5)
 
     def registrar():
@@ -81,7 +89,7 @@ def abrir_ventana_registro():
         except sqlite3.IntegrityError:
             messagebox.showerror("Error", "El usuario ya existe.")
 
-    ctk.CTkButton(ventana_registro, text="Registrar", command=registrar).pack(pady=20)
+    ctk.CTkButton(frame_registro, text="Registrar", command=registrar).pack(pady=20)
 
 
 inicializar_bd()
