@@ -3,6 +3,7 @@ from tkinter import messagebox
 from tkinter import Toplevel  # Importar Toplevel de tkinter
 from PIL import Image
 import os
+import sqlite3
 
 # Configuración inicial de CustomTkinter
 ctk.set_appearance_mode("Dark")
@@ -22,6 +23,19 @@ colores_intentos = {
     2: "#FF3300",
     3: "#CC0000"
 }
+
+def inicializar_bd():
+    conn = sqlite3.connect("usuarios.db")
+    cursor = conn.cursor()
+    cursor.execute(""""
+        CREATE TABLE IF NOT EXIST usuarios (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL
+        )
+    """)
+
+inicializar_bd()
 
 # Función para verificar Login
 def verificar_login():
