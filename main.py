@@ -195,14 +195,14 @@ boton_toggle.grid(row=9, column=0)
 mensaje_label = ctk.CTkLabel(ventana_principal, text="", font=("Arial", 12))
 mensaje_label.grid(row=10, column=0)
 
-boton_registro = ctk.CTkButton(ventana_principal, text="Registrarse", command=abrir_ventana_registro)
-boton_registro.grid(row=11, column=0, pady=5)
+boton_1 = ctk.CTkButton(ventana_principal, text="Aceptar", font=("Arial", 12), command=verificar_login)
+boton_1.grid(row=11, column=0)
 
 mensaje_label = ctk.CTkLabel(ventana_principal, text="", font=("Arial", 12))
 mensaje_label.grid(row=12, column=0)
 
-boton_1 = ctk.CTkButton(ventana_principal, text="Aceptar", font=("Arial", 12), command=verificar_login)
-boton_1.grid(row=13, column=0)
+boton_registro = ctk.CTkButton(ventana_principal, text="Registrarse", command=abrir_ventana_registro)
+boton_registro.grid(row=13, column=0, pady=5)
 
 mensaje_label = ctk.CTkLabel(ventana_principal, text="", font=("Arial", 12))
 mensaje_label.grid(row=14, column=0)
