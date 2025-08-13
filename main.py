@@ -93,6 +93,11 @@ def abrir_ventana_registro():
 
     ctk.CTkButton(frame_registro, text="Registrar", command=registrar).pack(pady=20)
 
+    def salir():
+        ventana_registro.destroy()
+
+    ctk.CTkButton(frame_registro, text="Salir", command=salir).pack(pady=20)
+
 
 inicializar_bd()
 # Función para verificar Login
