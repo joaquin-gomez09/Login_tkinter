@@ -32,6 +32,8 @@ def inicializar_bd():
             password_hash TEXT NOT NULL
         )
     """)
+    conn.commit()
+    conn.close()
 
 def hash_password(password: str):
     return hashlib.sha256(password.encode("utf-8")).hexdigest()
@@ -58,7 +60,7 @@ def verificar_usuario_bd(username,password):
 def abrir_ventana_registro():
     ventana_registro = Toplevel()
     ventana_registro.title("Registro de usuario")
-    ventana_registro.geometry("400x300")
+    ventana_registro.geometry("400x350")
     ventana_registro.configure(bg="#2b2b2b")  # Fondo oscuro para la ventana base
 
     ruta_icono = os.path.abspath("app_login/imagenes/icono.ico")
@@ -187,7 +189,7 @@ label_2.grid(row=5, column=0)
 char_field_2 = ctk.CTkEntry(ventana_principal, width=240, font=("Arial", 14), show="*")
 char_field_2.grid(row=6, column=0)
 
-ctk.CTkLabel(ventana_principal, text="").grid(row=8, column=0)
+ctk.CTkLabel(ventana_principal, text="").grid(row=8, column=0) # por las dudas no lo toques xd
 
 boton_toggle = ctk.CTkButton(ventana_principal, text="Mostrar", font=("Arial", 12), command=toggle_password)
 boton_toggle.grid(row=9, column=0)
