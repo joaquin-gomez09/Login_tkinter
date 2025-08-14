@@ -69,6 +69,8 @@ python identificacion.py
 - ✅ Implementar navegación a otra ventana tras el inicio de sesión.
 - ✅ Migrar el proyecto a una GUI mas moderna (CTk)
 
+## Proximamente mas cambios a agregar
+
 ## 📌 Requisitos
 
 - Python 3.x
