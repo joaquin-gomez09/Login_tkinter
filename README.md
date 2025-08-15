@@ -99,6 +99,3 @@ Tkinter (incluido en la mayoría de instalaciones de Python)
 
 💡 Próximamente: autenticación real con base de datos y versión en CustomTkinter para una interfaz más moderna.
 
-
----
-
