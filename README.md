@@ -1,77 +1,104 @@
-# 🖥️ Identificación con Tkinter
 
-Este proyecto es una interfaz gráfica simple creada con **Tkinter**, la biblioteca estándar de Python para crear interfaces gráficas de usuario (GUI). El propósito de esta aplicación es solicitar al usuario que ingrese su nombre de usuario y contraseña en una ventana amigable y bien organizada.
+---
 
-## 📋 Descripción del Proyecto
+🖥️ Identificación con Tkinter
 
-La aplicación muestra una ventana titulada **"Identificate"** con los siguientes elementos:
+Una interfaz gráfica sencilla desarrollada en Python usando Tkinter, diseñada para solicitar usuario y contraseña de forma amigable y ordenada.
 
-- Un campo para ingresar el **nombre de usuario**
-- Un campo para ingresar la **contraseña** (oculta con asteriscos)
-- Un botón de **"Aceptar"** para confirmar los datos ingresados
+📋 Descripción
 
-La interfaz está diseñada con márgenes internos y espaciado entre los elementos para mejorar la legibilidad y la estética.
+La aplicación abre una ventana titulada "Identificate" que incluye:
 
-## 🧱 Estructura del Código
+Campo para nombre de usuario
 
-El código está organizado de la siguiente manera:
+Campo para contraseña (oculto con asteriscos)
 
-### 1. **Importación de la biblioteca**
-```python
+Botón "Aceptar" para confirmar los datos ingresados
+
+
+Diseñada con espaciado y márgenes para mejorar legibilidad y estética.
+
+
+---
+
+🧱 Estructura del Código
+
+1. Importación
+
 from tkinter import *
-```
-Se importa todo el módulo `tkinter` para utilizar sus componentes.
 
-### 2. **Configuración de la ventana principal**
-```python
+2. Configuración de la ventana principal
+
 ventana_principal = Tk()
 ventana_principal.title("Identificate")
 ventana_principal.minsize(width=300, height=400)
 ventana_principal.config(padx=35, pady=35)
-```
-- Se crea la ventana principal.
-- Se asigna un título.
-- Se define un tamaño mínimo.
-- Se agregan márgenes internos.
 
-### 3. **Elementos de la interfaz**
-- **Etiqueta para el nombre de usuario**
-- **Campo de entrada para el nombre de usuario**
-- **Etiqueta para la contraseña**
-- **Campo de entrada para la contraseña** (con `show="*"` para ocultar el texto)
-- **Botón "Aceptar"**
+3. Elementos de la interfaz
 
-Cada elemento se posiciona usando el método `.grid()` para organizar la interfaz en filas y columnas.
+Label y Entry para usuario
 
-### 4. **Espaciado**
-Se utilizan etiquetas vacías (`Label(text="")`) para generar espacio entre los elementos y mejorar la presentación visual.
+Label y Entry para contraseña (show="*")
 
-### 5. **Bucle principal**
-```python
+Botón para enviar datos
+
+Espaciado con Label vacío
+
+Posicionamiento con .grid()
+
+
+4. Bucle principal
+
 ventana_principal.mainloop()
-```
-Este bucle mantiene la ventana abierta y activa hasta que el usuario la cierre.
 
-## 🚀 Cómo ejecutar el programa
 
-1. Asegúrate de tener Python instalado en tu sistema.
-2. Guarda el código en un archivo con extensión `.py`, por ejemplo: `identificacion.py`
-3. Ejecuta el archivo desde tu terminal o entorno de desarrollo:
-```bash
+---
+
+🚀 Ejecución
+
+1. Instalar Python 3.x
+
+
+2. Guardar el código como identificacion.py
+
+
+3. Ejecutar:
+
+
+
 python identificacion.py
-```
 
-## 🛠️ Posibles mejoras
 
-- ✅ Validar los datos ingresados y mostrar un mensaje de éxito o error.
-- ✅ Conectar con una base de datos para verificar credenciales.
-- ✅ Añadir estilos personalizados con `ttk` o temas.
-- ✅ Implementar navegación a otra ventana tras el inicio de sesión.
-- ✅ Migrar el proyecto a una GUI mas moderna (CTk)
+---
 
-## Proximamente mas cambios a agregar
+🛠️ Mejoras Implementadas / Pendientes
 
-## 📌 Requisitos
+[ ] Validar datos y mostrar mensajes de éxito/error
 
-- Python 3.x
-- Tkinter (incluido por defecto en la mayoría de instalaciones de Python)
+[ ] Conexión con base de datos para verificar credenciales
+
+[ ] Estilos personalizados con ttk o temas
+
+[ ] Redirección a otra ventana tras inicio de sesión
+
+[ ] Migración a una GUI más moderna con CustomTkinter
+
+
+
+---
+
+📦 Requisitos
+
+Python 3.x
+
+Tkinter (incluido en la mayoría de instalaciones de Python)
+
+
+
+---
+
+💡 Próximamente: autenticación real con base de datos y versión en CustomTkinter para una interfaz más moderna.
+
+
+---
+
